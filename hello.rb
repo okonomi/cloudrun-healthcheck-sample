@@ -6,3 +6,7 @@ Bundler.require
 get "/" do
   "hello!"
 end
+
+get "/health" do
+  status :ok
+end
