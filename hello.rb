@@ -1,3 +1,5 @@
+sleep 10
+
 require "rubygems"
 require "bundler"
 
