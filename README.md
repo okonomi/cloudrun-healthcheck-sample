@@ -25,7 +25,13 @@ gcloud run deploy hello \
   --allow-unauthenticated
 ```
 
-YAML:
+export:
+
+```
+gcloud beta run services describe hello --format export > service.yaml
+```
+
+update YAML:
 
 ```yml
 spec:
@@ -41,4 +47,10 @@ spec:
           timeoutSeconds: 1
           failureThreshold: 30
           periodSeconds: 5
+```
+
+replace:
+
+```
+gcloud run services replace service.yaml
 ```
