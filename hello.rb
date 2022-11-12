@@ -1,9 +1,12 @@
-sleep 30
-
 require "rubygems"
 require "bundler"
 
 Bundler.require
+
+require_relative "lib/boot_delay"
+
+
+use BootDelay
 
 set :bind, "0.0.0.0"
 set :port, ENV.fetch("PORT", 8080)
@@ -14,13 +17,5 @@ get "/" do
 end
 
 get "/health" do
-  status :ok
-end
-
-get "/liveness" do
-  status :ok
-end
-
-get "/startup" do
   status :ok
 end

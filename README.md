@@ -7,23 +7,22 @@ build:
 ```
 docker buildx build \
   --platform linux/amd64 \
-  -t asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloud-run-source-deploy/hello:latest \
-.
+  -t asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloudrun-healthcheck-sample/hello:latest \
+  .
 ```
 
 push:
 
 ```
-docker push asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloud-run-source-deploy/hello:latest
+docker push asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloudrun-healthcheck-sample/hello:latest
 ```
 
 deploy:
 
 ```
 gcloud run deploy hello \
-  --image asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloud-run-source-deploy/hello:latest \
-  --allow-unauthenticated \
-  --min-instances 1
+  --image asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloudrun-healthcheck-sample/hello:latest \
+  --allow-unauthenticated
 ```
 
 YAML:
@@ -37,7 +36,7 @@ spec:
         image: IMAGE_URL
         startupProbe:
           httpGet:
-            path: /startup
+            path: /health
           initialDelaySeconds: 10
           timeoutSeconds: 1
           failureThreshold: 30
