@@ -5,6 +5,7 @@ require "bundler"
 
 Bundler.require
 
+set :bind, "0.0.0.0"
 set :port, ENV.fetch("PORT", 8080)
 set :environment, "production"
 

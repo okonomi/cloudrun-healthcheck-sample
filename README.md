@@ -8,3 +8,11 @@ deploy:
 gcloud run deploy hello --source . \
     --allow-unauthenticated
 ```
+
+docker buildx build \
+--platform linux/arm64 \
+-t asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloud-run-source-deploy/hello:latest \
+.
+
+gcloud run deploy hello \
+--image asia-northeast1-docker.pkg.dev/cloudrun-healthcheck-sample/cloud-run-source-deploy/hello:latest
